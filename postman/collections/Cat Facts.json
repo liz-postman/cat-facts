@@ -52,12 +52,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/faaact?max_length=100",
+							"raw": "{{baseUrl}}/fact?max_length=100",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"faaact"
+								"fact"
 							],
 							"query": [
 								{
