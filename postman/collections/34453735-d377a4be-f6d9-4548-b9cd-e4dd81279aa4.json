@@ -12,6 +12,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "794e19c1-41b2-4eaa-ab29-5779c0144477",
 						"exec": [
 							"",
 							"pm.test(\"Response status code is 200\", function () {",
@@ -43,9 +44,39 @@
 							"    ",
 							"    pm.expect(responseData).to.be.an('object');",
 							"    pm.expect(responseData).to.have.property('id');",
-							"});"
+							"});",
+							"var template = `",
+							"<style type=\"text/css\">",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+							"    .tftable tr {background-color:#ffffff;}",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+							"    .tftable tr:hover {background-color:#e0ffff;}",
+							"</style>",
+							"",
+							"<table class=\"tftable\" border=\"1\">",
+							"    <tr>",
+							"        <th>ID</th>",
+							"        <th>Name</th>",
+							"        <th>Info</th>",
+							"    </tr>",
+							"    ",
+							"    <tr>",
+							"        <td>{{response.id}}</td>",
+							"        <td>{{response.name}}</td>",
+							"        <td>{{response.info}}</td>",
+							"    </tr>",
+							"</table>",
+							"`;",
+							"",
+							"function constructVisualizerPayload() {",
+							"    return {response: pm.response.json()};",
+							"}",
+							"",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
